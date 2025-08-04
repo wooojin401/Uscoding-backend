@@ -10,10 +10,5 @@
         <module name="uscoding.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="uscoding" target="17" />
-      <module name="uscoding.main" target="17" />
-      <module name="uscoding.test" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>
