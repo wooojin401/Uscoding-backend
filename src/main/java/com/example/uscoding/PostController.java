@@ -10,7 +10,7 @@ public class PostController {
     @PostMapping
     public void receivePost(@RequestBody PostRequestDto     dto) {
         System.out.println("주제2: " + dto.getTitle());
-        System.out.println("코드 상세내역: " + dto.getCode());
+        System.out.println("코드 상세내역2323232: " + dto.getCode());
         System.out.println("설명2: " + dto.getContent());
         System.out.println("카테고리: " + dto.getCategory());
     }
