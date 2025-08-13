@@ -5,15 +5,17 @@
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.38/57f8f5e02e92a30fd21b80cbd426a4172b5f8e29/lombok-1.18.38.jar" />
+          <entry name="$USER_HOME$/OneDrive/문서/SpringBoot/smVacation/us_coding/us_coding/src/main/java/com/example/us_coding/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.38/57f8f5e02e92a30fd21b80cbd426a4172b5f8e29/lombok-1.18.38.jar" />
         </processorPath>
         <module name="uscoding.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="uscoding" target="17" />
-      <module name="uscoding.main" target="17" />
-      <module name="uscoding.test" target="17" />
-    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="uscoding" options="-parameters" />
+      <module name="uscoding.main" options="-parameters" />
+      <module name="uscoding.test" options="-parameters" />
+    </option>
   </component>
 </project>
