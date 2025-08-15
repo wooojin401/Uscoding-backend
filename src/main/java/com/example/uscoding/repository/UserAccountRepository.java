@@ -3,5 +3,10 @@ package com.example.uscoding.repository;
 import com.example.uscoding.domain.UserAccount;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserAccountRepository extends JpaRepository<UserAccount, Long> {
+import java.math.BigInteger;
+import java.util.Optional;
+
+public interface UserAccountRepository extends JpaRepository<UserAccount, BigInteger> {
+    Optional<UserAccount> findByEmail(String email);
+    Optional<UserAccount> findByNickname(String nickname);
 }

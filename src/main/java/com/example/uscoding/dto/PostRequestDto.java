@@ -1,4 +1,4 @@
-package com.example.uscoding;
+package com.example.uscoding.dto;
 import lombok.Data;
 
 @Data
