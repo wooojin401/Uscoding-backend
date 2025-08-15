@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -31,7 +32,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 // 1) CORS 허용
-                .cors(cors -> {})
+               /* .cors(cors -> {})
                 // 2) 개발용으로 CSRF 비활성화 (운영 전 다시 점검 권장)
                 .csrf(csrf -> csrf.disable())
                 // 3) 권한 규칙
@@ -55,7 +56,24 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 // 6) 인증 프로바이더(유저조회+비번검증)
-                .userDetailsService(myUserDetailsService);
+                .userDetailsService(myUserDetailsService);*/
+                .cors(cors -> {})
+                .csrf(csrf -> csrf.disable())
+                .cors(Customizer.withDefaults())
+                .formLogin(f -> f
+                        .loginProcessingUrl("/login")
+                        .successHandler((req, res, auth) -> {
+                            res.setStatus(200);
+                            res.setContentType("application/json");
+                            res.getWriter().write("{\"message\":\"ok\"}");
+
+                        })
+                        .failureHandler((req, res, ex) -> {
+                            res.setStatus(401);
+                            res.setContentType("application/json");
+                            res.getWriter().write("{\"error\":\"bad_credentials\"}");
+                        })
+                );
 
         return http.build();
     }
