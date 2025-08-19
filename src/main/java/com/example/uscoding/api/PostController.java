@@ -49,12 +49,21 @@ public class PostController {
 
         // 5) 생성된 id 반환
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new PostResponseDto(saved.getId()));
+                .body(new PostResponseDto(
+                        saved.getId(),
+                        saved.getUser(),
+                        saved.getTitle(),
+                        saved.getCode(),
+                        saved.getContent(),
+                        saved.getCategory(),
+                        saved.getDate() != null ? saved.getDate() : null ,
+                        saved.getLikes()
+                ));
     }
 
     // 전체 조회 (간단 확인용)
     @GetMapping("/posts")
-    public ResponseEntity<List<Post>> findAll() {
-        return ResponseEntity.ok(postRepository.findAll());
+    public List<PostResponseDto> findAll() {
+        return postRepository.findAll().stream().map(PostResponseDto::from).toList();
     }
 }
