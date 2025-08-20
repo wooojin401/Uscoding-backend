@@ -1,5 +1,6 @@
     package com.example.uscoding.domain;
 
+    import com.fasterxml.jackson.annotation.JsonIgnore;
     import jakarta.persistence.*;
     import lombok.*;
 
@@ -16,7 +17,7 @@
 
         @Column(nullable = false, length = 120)
         private String email;
-
+        @JsonIgnore
         @Column(nullable = false, length = 120)
         private String password;
 
