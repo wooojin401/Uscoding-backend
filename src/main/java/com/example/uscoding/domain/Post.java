@@ -1,5 +1,6 @@
 package com.example.uscoding.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 @Table(name = "posts")
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor @Builder
+@ToString
 public class Post {
 
     @Id
@@ -16,7 +18,8 @@ public class Post {
     private Long id;  // 글 번호
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)     // FK
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})   // FK
     private UserAccount user;
 
     @Column(nullable = false, length = 255)

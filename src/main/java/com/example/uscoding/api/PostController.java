@@ -47,6 +47,7 @@ public class PostController {
         // 4) 저장
         Post saved = postRepository.save(post);
 
+
         // 5) 생성된 id 반환
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(new PostResponseDto(
@@ -61,9 +62,15 @@ public class PostController {
                 ));
     }
 
-    // 전체 조회 (간단 확인용)
-    @GetMapping("/posts")
-    public List<PostResponseDto> findAll() {
-        return postRepository.findAll().stream().map(PostResponseDto::from).toList();
+
+
+    @GetMapping("/getPost")
+    public List<Post> ping() {
+        var result = postRepository.findAll();
+        //System.out.println(result);
+        return result;
     }
+
+
+
 }
